@@ -2,20 +2,32 @@
 
 > AI-powered trail hazard reporting for the Alpine community.
 
-Built for the **[EUSALP Alpine AI-Hackathon 2026](https://www.alpine-space.eu/)** — *Destination Resilience* challenge. Hikers and mountain bikers report trail hazards via their phone camera. Claude Vision AI classifies each hazard, assigns a priority, and geo-routes the report to the responsible authority. Closed trail data is published via an open API for apps like Komoot to consume.
+Built for the **[EUSALP Alpine AI-Hackathon 2026](https://alpine-region.eu/news/detail?tx_news_pi1%5Baction%5D=detail&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Bnews%5D=378&cHash=014b6051d57da183a98dc6c25c3b23b0)** — *Destination Resilience* challenge. Hikers and mountain bikers report trail hazards via their phone camera. Claude Vision AI classifies each hazard, assigns a priority, and geo-routes the report to the responsible authority. Closed trail data is published via an open API for apps like Komoot to consume.
 
 ---
 
 ## Screenshots
 
 <p align="center">
-  <img src=".github/screenshots/home.png" width="22%" alt="Home" />
-  <img src=".github/screenshots/camera.png" width="22%" alt="Camera / AI Scan" />
-  <img src=".github/screenshots/success.png" width="22%" alt="Thank You" />
-  <img src=".github/screenshots/dashboard.png" width="22%" alt="Authority Dashboard" />
+  <img src=".github/screenshots/home.png" width="30%" alt="Home" />
+  &nbsp;
+  <img src=".github/screenshots/camera.png" width="30%" alt="Camera / AI Scan" />
+  &nbsp;
+  <img src=".github/screenshots/success.png" width="30%" alt="Thank You" />
 </p>
 <p align="center">
-  <sub>Home &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Camera / AI Scan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thank You &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Authority Dashboard</sub>
+  <sub>Home &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Camera / AI Scan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Thank You</sub>
+</p>
+
+<p align="center">
+  <img src=".github/screenshots/dashboard.png" width="30%" alt="Authority Dashboard" />
+  &nbsp;
+  <img src=".github/screenshots/report_detail.png" width="30%" alt="Report Detail" />
+  &nbsp;
+  <img src=".github/screenshots/profile.png" width="30%" alt="Profile" />
+</p>
+<p align="center">
+  <sub>Authority Dashboard &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Report Detail &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Profile</sub>
 </p>
 
 ---
@@ -109,9 +121,3 @@ trail_aware_ailps/
 **Challenge:** How might we strengthen the resilience of Alpine destinations in the face of changing tourism, environmental, and economic conditions?
 
 TrailAware AIlps addresses the growing frequency of trail hazards caused by extreme weather events by creating a fast, AI-assisted feedback loop between hikers and the authorities responsible for trail maintenance.
-
----
-
-<p align="center">
-  Made with ☕ at EUSALP Alpine AI-Hackathon 2026
-</p>
