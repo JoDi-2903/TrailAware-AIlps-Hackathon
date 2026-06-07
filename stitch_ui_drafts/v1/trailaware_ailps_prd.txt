@@ -1,0 +1,21 @@
+# TrailAware AIlps - App Architecture & UX Flow
+
+## Brand Identity
+- **Name:** TrailAware AIlps
+- **Vision:** Strengthening Alpine resilience through AI-powered community reporting of environmental hazards.
+- **Tone:** Professional, reliable, empowering, and helpful.
+
+## Target Users
+1. **Hikers & Mountain Bikers:** Real-time reporting of trail hazards (rockfalls, landslides, fallen trees).
+2. **Authorities (National Parks, Alpine Clubs):** Dashboard for managing reports and prioritizing maintenance.
+
+## Core App Flow (iOS)
+1. **Dashboard/Home:** Overview of local trail status, recent reports, and quick-action "Report Hazard" button.
+2. **AI Camera Reporter:** Live AR-enhanced camera view that identifies hazards using AI, classifies them, and sets priority.
+3. **Report Summary & Success:** A "feel-good" confirmation screen thanking the user for contributing to Alpine safety.
+4. **Authority Dashboard:** A professional table/map view for organizations to manage incoming alerts and proposed AI solutions.
+
+## Technical Best Practices
+- **UI:** Flutter with Cupertino widgets for native iOS feel.
+- **Animations:** Smooth Hero transitions, shimmer loading states, and haptic feedback triggers.
+- **API:** Mocked open API endpoints for data sharing with apps like Komoot.

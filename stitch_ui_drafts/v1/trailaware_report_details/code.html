@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hazard Report: Massive Rockfall</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#002114",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#a2a5ba",
+                        "inverse-primary": "#a5d0b9",
+                        "secondary-fixed-dim": "#a1cedc",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "background": "#f9faf6",
+                        "on-tertiary-fixed-variant": "#424658",
+                        "primary-fixed": "#c1ecd4",
+                        "outline": "#717973",
+                        "on-background": "#1a1c1a",
+                        "secondary": "#386471",
+                        "inverse-on-surface": "#f0f1ee",
+                        "surface-bright": "#f9faf6",
+                        "on-secondary-fixed-variant": "#1e4c59",
+                        "tertiary-fixed-dim": "#c2c5db",
+                        "surface-container-low": "#f3f4f1",
+                        "on-primary-container": "#86af99",
+                        "outline-variant": "#c1c8c2",
+                        "surface-container": "#eeeeeb",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#3f6653",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f9faf6",
+                        "on-surface-variant": "#414844",
+                        "surface-container-high": "#e8e8e5",
+                        "on-surface": "#1a1c1a",
+                        "tertiary-fixed": "#dee1f8",
+                        "surface-variant": "#e2e3e0",
+                        "tertiary-container": "#373b4c",
+                        "secondary-container": "#bceaf9",
+                        "primary": "#012d1d",
+                        "tertiary": "#212536",
+                        "surface-container-highest": "#e2e3e0",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#171b2b",
+                        "primary-container": "#1b4332",
+                        "secondary-fixed": "#bceaf9",
+                        "on-secondary-fixed": "#001f27",
+                        "on-secondary-container": "#3f6b78",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#dadad7",
+                        "inverse-surface": "#2f312f",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#a5d0b9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "stack-sm": "4px",
+                        "stack-md": "12px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "stack-lg": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md-mobile": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md-mobile": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "letterSpacing": "-0.41px", "fontWeight": "400" }],
+                        "display-lg": ["34px", { "lineHeight": "41px", "letterSpacing": "0.37px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "30px", "letterSpacing": "0px", "fontWeight": "600" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top Navigation (Task-focused, suppressing global nav) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+<div class="flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full">
+<button class="flex items-center text-primary hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined mr-2">arrow_back_ios</span>
+<span class="font-body-lg text-body-lg">Back to Alerts</span>
+</button>
+<div class="font-headline-md-mobile text-headline-md-mobile text-primary tracking-tight">Report Details</div>
+<div class="w-24"></div> <!-- Spacer for centering -->
+</div>
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-5xl mx-auto space-y-stack-lg">
+<!-- Header Section -->
+<div class="space-y-stack-md">
+<div class="flex items-center space-x-3">
+<span class="inline-flex items-center px-3 py-1 rounded-full border border-error text-error bg-error-container/20 font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[16px] mr-1">warning</span> CRITICAL
+                </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ID: #AL-992-RF</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary">Massive Rockfall</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant flex items-center">
+<span class="material-symbols-outlined mr-2 text-secondary">location_on</span>
+                Trail 4A, Near Eagle's Peak Summit
+            </p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-stack-lg">
+<!-- Main Photo & Description (Spans 8 cols on desktop) -->
+<div class="md:col-span-8 space-y-stack-lg">
+<div class="rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] relative aspect-video">
+<img alt="Hazard Photo" class="w-full h-full object-cover" data-alt="A detailed, high-resolution photograph of a massive rockfall blocking a high-altitude alpine trail. Large, jagged grey and brown boulders dominate the scene, entirely obstructing the narrow path carved into the mountainside. The lighting is harsh mid-day sunlight, casting deep shadows that emphasize the rough texture of the rocks and the danger of the situation. In the background, distant snow-capped peaks are visible against a clear, bright blue sky, contrasting with the chaotic destruction in the foreground." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsaeFZHIgsM20vcQOwnuUSe94id9w84G2Eni0Z_Np9bEO8VviHKFaNIu_I-Rvz1Dc-APD6Cb6guqgPSfzqku4io8sGAi2EesBYq5x5gRXIZeZBgbz_9G0e2vbaqLgK20gHN9TrX4j132f8WnLjw3iaQPi8JMUPArPAs8o5UdciBv3GC_8zDrJXmzsRjEvorBV7qAkozfvdUPg3ajj3FWTUwPzsZC4BoulKfhLrralKWFP16v6EDG_hycWrdsGj5M2_LFerMZYAb3A"/>
+<div class="absolute bottom-4 left-4 glass-panel px-4 py-2 rounded-lg flex items-center space-x-2 text-primary">
+<span class="material-symbols-outlined fill">photo_camera</span>
+<span class="font-body-sm text-body-sm">Captured 2 hours ago</span>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl space-y-stack-md">
+<h3 class="font-headline-md-mobile text-headline-md-mobile text-primary">Situation Description</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        A significant rockslide has completely blocked Trail 4A approximately 500 meters below the Eagle's Peak summit. The debris field covers approximately 30 meters of the trail and includes boulders exceeding 2 meters in diameter. The trail structure beneath the slide appears compromised. Immediate closure of this route is necessary to prevent hiker injury.
+                    </p>
+</div>
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/50 space-y-stack-md">
+<div class="flex items-center space-x-2 text-secondary">
+<span class="material-symbols-outlined">smart_toy</span>
+<h3 class="font-headline-md-mobile text-headline-md-mobile">AI Analysis &amp; Proposed Solution</h3>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        Based on image analysis and geological data, the slope remains unstable. Initial clearing will require specialized heavy machinery (excavator) and a geological survey team to assess structural integrity before reopening. Estimated clearing time: 3-5 days once equipment is on-site.
+                    </p>
+</div>
+</div>
+<!-- Metadata & Actions (Spans 4 cols on desktop) -->
+<div class="md:col-span-4 space-y-stack-lg flex flex-col">
+<!-- Metadata Card -->
+<div class="glass-panel p-6 rounded-xl flex-grow space-y-stack-md">
+<h3 class="font-headline-md-mobile text-headline-md-mobile text-primary mb-4">Report Details</h3>
+<div class="space-y-4">
+<div class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-outline mt-0.5">person</span>
+<div>
+<div class="font-label-caps text-label-caps text-outline">Reported By</div>
+<div class="font-body-lg text-body-lg text-on-surface">Alex M., Trail Guide</div>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-outline mt-0.5">schedule</span>
+<div>
+<div class="font-label-caps text-label-caps text-outline">Timestamp</div>
+<div class="font-body-lg text-body-lg text-on-surface">Oct 24, 2023 - 14:32 UTC</div>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-outline mt-0.5">landscape</span>
+<div>
+<div class="font-label-caps text-label-caps text-outline">Elevation</div>
+<div class="font-body-lg text-body-lg text-on-surface">2,850 meters ASL</div>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-outline mt-0.5">my_location</span>
+<div>
+<div class="font-label-caps text-label-caps text-outline">Coordinates</div>
+<div class="font-body-lg text-body-lg text-on-surface">45.9231° N, 6.8694° E</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Snippet -->
+<div class="h-48 rounded-xl overflow-hidden shadow-sm relative border border-outline-variant/30">
+<img alt="Map Location" class="w-full h-full object-cover grayscale opacity-80" data-alt="A top-down topographical map view of a mountainous region, rendered in a clean, modern UI style. The map features subtle contour lines indicating steep elevation, colored in light greys and soft alpine greens. A distinct red warning marker pinpoints a specific location on a winding trail path, indicating a hazard. The overall aesthetic is functional, clear, and designed for high-end trekking applications." data-location="Eagle's Peak" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1jV5xJ9SgWKVk7SNqmgDb2DjSuNMVdTTtpcepb_GzDZm4Ja_XVJVlcLkzguw-iWdiZj31UjnjlTgPRnkMvFuV8LA7nsaOsu4Qn1w7bIH5p6R3sxrVeOjPKsMeunKLHqBpbADtQtaW53AEnhKNVq4aog9lJ7Vyv9YpfXqtFD1UQh-LK7g717t8poI0JmXPSA6rBQMNBqgmUzc1bl4f6qCKWNmVxmHz_e3kEiIPQOFAkZHvpi1wTgc-QgMc87lEP9fM4-zroc0_Wys"/>
+<div class="absolute inset-0 bg-primary/10"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<span class="material-symbols-outlined fill text-error text-4xl drop-shadow-md">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Action Bar (Sticky Bottom) -->
+<div class="fixed bottom-0 w-full z-40 bg-surface/90 backdrop-blur-xl border-t border-outline-variant/30 pb-safe">
+<div class="max-w-5xl mx-auto px-margin-mobile md:px-margin-desktop py-4 flex flex-col sm:flex-row gap-4 justify-end items-center">
+<button class="w-full sm:w-auto px-6 py-3 rounded-lg border border-primary text-primary font-body-lg text-body-lg font-semibold hover:bg-primary/5 transition-colors active:scale-95">
+                Close Report
+            </button>
+<button class="w-full sm:w-auto px-6 py-3 rounded-lg bg-primary text-on-primary font-body-lg text-body-lg font-semibold shadow-[0_8px_24px_rgba(27,67,50,0.15)] hover:bg-primary-container transition-colors active:scale-95 flex items-center justify-center">
+<span class="material-symbols-outlined mr-2">local_shipping</span>
+                Dispatch Team
+            </button>
+</div>
+</div>
+</body></html>

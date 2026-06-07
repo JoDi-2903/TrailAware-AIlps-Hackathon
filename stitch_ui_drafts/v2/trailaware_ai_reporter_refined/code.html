@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>AI Camera Reporter - TrailAware Alps</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#386471",
+                        "on-surface": "#1a1c1a",
+                        "surface-container": "#eeeeeb",
+                        "tertiary-container": "#373b4c",
+                        "inverse-surface": "#2f312f",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f9faf6",
+                        "surface-tint": "#3f6653",
+                        "secondary-fixed-dim": "#a1cedc",
+                        "on-surface-variant": "#414844",
+                        "inverse-primary": "#a5d0b9",
+                        "outline-variant": "#c1c8c2",
+                        "surface-dim": "#dadad7",
+                        "on-background": "#1a1c1a",
+                        "outline": "#717973",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e2e3e0",
+                        "primary": "#012d1d",
+                        "on-tertiary-container": "#a2a5ba",
+                        "surface": "#f9faf6",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#bceaf9",
+                        "surface-container-low": "#f3f4f1",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c2c5db",
+                        "surface-variant": "#e2e3e0",
+                        "primary-container": "#1b4332",
+                        "tertiary": "#212536",
+                        "primary-fixed": "#c1ecd4",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "on-tertiary-fixed-variant": "#424658",
+                        "on-secondary-fixed": "#001f27",
+                        "on-secondary-fixed-variant": "#1e4c59",
+                        "on-tertiary-fixed": "#171b2b",
+                        "on-secondary-container": "#3f6b78",
+                        "inverse-on-surface": "#f0f1ee",
+                        "surface-container-high": "#e8e8e5",
+                        "background": "#f9faf6",
+                        "on-primary-container": "#86af99",
+                        "on-primary-fixed": "#002114",
+                        "tertiary-fixed": "#dee1f8",
+                        "secondary-container": "#bceaf9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "4px",
+                        "stack-lg": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "stack-md": "12px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-md-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["17px", {"lineHeight": "22px", "letterSpacing": "-0.41px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "30px", "letterSpacing": "0px", "fontWeight": "600"}],
+                        "headline-md-mobile": ["20px", {"lineHeight": "25px", "fontWeight": "600"}],
+                        "body-sm": ["15px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["34px", {"lineHeight": "41px", "letterSpacing": "0.37px", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .camera-ui-panel {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .reticle-corner {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+        .reticle-tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+        .reticle-tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+        .reticle-bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+        .reticle-br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+        @keyframes scan {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-black text-on-surface h-screen w-full overflow-hidden relative font-body-lg">
+<!-- Simulated Camera Feed Background -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="Photorealistic, high-drama vertical shot of a massive alpine rockfall completely blocking a narrow hiking trail in the Dolomites. Huge limestone boulders and debris are piled high, making the path impassable. Mist and low clouds swirl between jagged peaks in the background. Cinematic lighting, sharp detail, 8k resolution. Overlay a subtle UI reticle in the center." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA98rKDfYlTNOhweHYUNJjH6kBOkVTzI08K58DjhsRt4JndT-H4y9essnuy1bNJW4aq_kS6Yh0NZbr2UjTLxbkO0WnBaHNtaHmSDAynTU-dI2p1SDV_iDtVx4Y-8Qyr9KYJh1SlB4QfmF4MA4zVt46dZ5Gjbb0YmTBDqH1JODhuwUR8HBK_lwXIZo186MPLjXyaMg777gxhVIWhPh_avJQeV8zEa5nnuoyjTGLizIgYIr6aplIrQ-h8_vlKbJlwSRQraglEwYvVyDQ');"></div>
+<!-- Overlay Gradient for Readability -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 pointer-events-none"></div>
+<!-- Top Navigation / Actions -->
+<div class="absolute top-0 w-full pt-safe px-margin-mobile pt-4 flex justify-between items-center z-50">
+<button aria-label="Close Camera" class="w-10 h-10 rounded-full camera-ui-panel flex items-center justify-center text-white active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<div class="camera-ui-panel px-4 py-2 rounded-full flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></div>
+<span class="font-label-caps text-label-caps text-white tracking-widest uppercase">AI Analysis Active</span>
+</div>
+<div class="w-10"></div> <!-- Spacer to keep header centered -->
+</div>
+<!-- Professional Camera Reticle -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 z-30 pointer-events-none">
+<div class="reticle-corner reticle-tl"></div>
+<div class="reticle-corner reticle-tr"></div>
+<div class="reticle-corner reticle-bl"></div>
+<div class="reticle-corner reticle-br"></div>
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+<div class="w-12 h-0.5 bg-white/50 absolute"></div>
+<div class="w-0.5 h-12 bg-white/50 absolute"></div>
+<div class="w-1 h-1 bg-white rounded-full"></div>
+</div>
+</div>
+<!-- Bottom Controls Area -->
+<div class="absolute bottom-0 w-full pb-safe z-50 flex flex-col w-full">
+<!-- Flash & Reticle Controls -->
+<div class="flex justify-between w-full px-margin-mobile mb-6">
+<button class="w-12 h-12 rounded-full camera-ui-panel flex items-center justify-center text-white active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="flash_on">flash_on</span>
+</button>
+<!-- Main Capture Button -->
+<button class="relative w-20 h-20 rounded-full border-2 border-white/80 flex items-center justify-center active:scale-90 transition-transform group mx-auto">
+<div class="w-16 h-16 rounded-full bg-white group-active:bg-surface-dim transition-colors flex items-center justify-center"></div>
+</button>
+<button class="w-12 h-12 rounded-full camera-ui-panel flex items-center justify-center text-white active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="center_focus_strong">center_focus_strong</span>
+</button>
+</div>
+<!-- AI Status Bar -->
+<div class="w-full bg-black/80 backdrop-blur-md border-t border-white/10 px-margin-mobile py-4" id="status-bar">
+<div class="flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-white/60 uppercase tracking-wider">Analysis Status</span>
+<span class="font-body-sm text-body-sm text-white font-medium" id="status-text">Scanning environment...</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center" id="status-icon-container">
+<span class="material-symbols-outlined text-primary-fixed animate-spin" data-icon="radar" id="status-icon" style="font-variation-settings: 'FILL' 1;">radar</span>
+</div>
+</div>
+</div>
+</div>
+<script>
+        // Simulate AI detection process
+        setTimeout(() => {
+            const statusIcon = document.getElementById('status-icon');
+            const statusIconContainer = document.getElementById('status-icon-container');
+            const statusText = document.getElementById('status-text');
+            const statusBar = document.getElementById('status-bar');
+            
+            // Remove spin, change icon and text
+            statusIcon.classList.remove('animate-spin');
+            statusIcon.classList.remove('text-primary-fixed');
+            statusIcon.classList.add('text-error');
+            statusIcon.textContent = 'warning';
+            statusIcon.setAttribute('data-icon', 'warning');
+            
+            statusIconContainer.classList.remove('bg-white/10');
+            statusIconContainer.classList.add('bg-error/20');
+            
+            statusText.textContent = 'Hazard Detected: Rockfall Blockage';
+            statusText.classList.replace('text-white', 'text-error-container');
+            
+            statusBar.classList.add('border-t-error/50');
+            
+        }, 3000); // 3 seconds detection simulation
+    </script>
+</body></html>
